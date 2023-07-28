@@ -1,0 +1,90 @@
+﻿{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title }}</title>
+    <link href="{% static 'bootstrap-5.2.0.css' %}" rel="stylesheet">
+    <script src="{% static 'jquery-3.6.0.js' %}"></script>
+</head>
+
+<style>
+
+@font-face {
+  font-family: "myfont";
+  src: url("{% static 'iranian-sans.woff' %}") format('woff');
+}
+
+@font-face {
+  font-family: "myfont";
+  src: url("{% static 'iranian-sans.woff' %}") format('woff');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "myfont";
+  src: url("{% static 'iranian-sans.woff' %}") format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "myfont";
+  src: url("{% static 'iranian-sans.woff' %}") format('woff');
+  font-style: italic;
+}
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  margin: 25px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+{% block content %}
+    <div class="loader"></div>
+    <div id="main" style="margin: 25px; font-size: large; font-family: Nanum Myeongjo">
+        <div id="res" ></div>
+    </div>
+{% endblock %}
+
+<script>
+    window.setInterval('refresh()', 3000);
+    function refresh() {
+        $.ajax({
+        url: '{% url 'logs:ajax-logs-data' %}',
+        method: 'post',
+        data: {
+            log_level: '{{ log_level }}',
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+        error: function () {
+            console.log("error")
+        },
+        success: function (data) {
+            const myNode = document.getElementById("main");
+            myNode.innerHTML = '<div class="res" ></div>';
+            if (data.result.length > 0) {
+                for (var i = 0; i < data.result.length; i++) {
+                    $("div.res").append('<span><br>' + data.result[i][0] + ': ' + data.result[i][1] + '<br>');
+                }
+            } else {
+                $("div.res").append('<span><br>بدون اطلاعات<br>');
+            }
+            },
+        })
+    }
+</script>
+
+
+
+</html>

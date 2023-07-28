@@ -1,0 +1,146 @@
+﻿{% load static %}
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description" content="Envato Telegram Bot Web-Service Backend Powered By Python & Django">
+    <meta name="keywords" content="Envato, Telegram, Bot, Web-Service, Backend, Python, Django">
+    <meta name="author" content="AmirHossein F">
+    <title>Envato Telegram Bot Web-Service Backend</title>
+
+    <!-- ============ GOOGLE FONTS ============ -->
+    <link href="{% static 'landing/fonts/google-roboto.css' %}" rel="stylesheet">
+
+    <!-- CSS -->
+    <!-- Animate css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'landing/css/animate.css' %}">
+    <!-- Font Awesome CSS -->
+    <link href="{% static 'fontawesome-free-6.4.0-web/css/fontawesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'fontawesome-free-6.4.0-web/css/solid.css' %}" rel="stylesheet">
+    <!-- Custom styles CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'landing/css/style.css' %}">
+    <!-- Bootstrap v3.3.1 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'landing/css/bootstrap.min.css' %}">
+    <!-- Vegas CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'landing/css/vegas.min.css' %}">
+    <!-- BX Slider CSS -->
+    <link href="{% static 'landing/css/jquery.bxslider.css' %}" rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{% static 'landing/images/favicon.ico' %}">
+</head>
+
+<body class="example">
+
+<!-- HEADER -->
+<header id="header">
+    <div class="container">
+        <div class="welcome">
+            <div class="logo animated fadeInDown"><img src="{% static 'landing/images/logo.png' %}" alt=""></div>
+
+            <!-- Social Icons -->
+            <div class="social-icons">
+                <ul class="animated fadeInDownBig ">
+                    <li><a href=""><i class="fa-solid fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fa-solid fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fa-solid fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fa-solid fa-snapchat" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <!-- /Social Icons -->
+
+        </div>
+    </div>
+</header>
+<!-- END HEADER -->
+
+<!-- CONTENT SLIDER -->
+
+<div id="slider" class="container">
+    <ul class="bxslider">
+        <!-- Slide 1-->
+        <li>
+            <div class="title">Discovering your city’s<br>
+                <span>Nightlife</span></div>
+            <h3>a real guide on what & where is happening<br>
+                around you minute by minute</h3>
+            <div class="scroller"><a href="#footer"><span><span class="scroll-down"></span></span>SCROLL FOR MORE</a>
+            </div>
+        </li>
+
+        <!-- Slide 2-->
+        <li>
+            <div class="title">A brand <span>new</span> and <span>exiting</span><br>
+                experience.
+            </div>
+            <h3>discover a new amazing world surrounded by fun,<br>
+                thrill, exiting parties, movies, etc... We are going to rock your world</h3>
+            <div class="scroller"><a href="#footer"><span><span class="scroll-down"></span></span>SCROLL FOR MORE</a>
+            </div>
+        </li>
+
+        <!-- Slide 3-->
+        <li>
+            <div class="title">Invite your <span>friends</span> for a
+                crazy and fun night!
+            </div>
+            <h3>no more lonely nights with yourself and the cat.<br>
+                Choose what you're in the mood for and find a night partner</h3>
+            <div class="scroller"><a href="#footer"><span><span class="scroll-down"></span></span>SCROLL FOR MORE</a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!-- END CONTENT SLIDER -->
+
+<!-- FOOTER -->
+<footer>
+    <div id="footer">
+        <div class="container">
+
+            <!-- Email-form -->
+            <div class="email-form">
+                <h4>we are about to <span>blow</span> your mind</h4>
+                <div class="newsletter">
+                    <form action="#" name="newsletter" class="newsletter" method="post">
+                        <input type="email" name="newsletter" id="newsletter"
+                               pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$"
+                               placeholder="EMAIL" required="">
+                        <button type="submit" name="submit">STAY IN THE LOOP</button>
+                    </form>
+                </div>
+                <!-- /Email-form  -->
+            </div>
+            <!-- Social Icons -->
+            <div class="social-icons">
+                <ul>
+                    <li><a href=""><i class="fa-regular fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fa-regular fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fa-regular fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fa-regular fa-snapchat" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <!-- /Social Icons -->
+
+        </div>
+    </div>
+</footer>
+<!-- END FOOTER -->
+
+<!-- Javascript files -->
+<!-- jQuery -->
+<script src="{% static 'landing/js/jquery.js' %}"></script>
+
+<!-- Vegas Javascript file -->
+<script src="{% static 'landing/js/vegas.min.js' %}"></script>
+<!-- Slider settings Javascript file -->
+<script src="{% static 'landing/js/sliders.js' %}"></script>
+<!-- BX Slider Javascript file -->
+<script src="{% static 'landing/js/jquery.bxslider.min.js' %}"></script>
+</body>
+</html>

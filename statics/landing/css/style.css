@@ -1,0 +1,367 @@
+/*
+    Name: Minimal
+    Description: Responsive Landing Page
+    Version: 1.0
+    Author: Schintu Desing
+
+    TABLE OF CONTENTS
+    ---------------------------
+     1. General
+     2. Header
+     3. Slider
+     4. Footer
+     5. Responsive CSS
+*/
+
+
+/* ================================= */
+/* :::::::::: 1. General ::::::::::: */
+/* ================================= */
+
+html, body {
+	font-family: "Roboto", sans-serif!important;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+body {
+	background-color: #000000!important;
+}
+a, a:link {
+	color: rgba(255, 255, 255, 0.6);
+	font-weight: 900;
+	text-decoration: none;
+}
+a:hover {
+	color: rgba(255, 255, 255, 0.9);
+	text-decoration: none;
+}
+
+
+::-webkit-input-placeholder { /* WebKit browsers */
+ color:    #FFFFFF;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+ color:    #FFFFFF;
+ opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+ color: #FFFFFF;
+ opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+ color:  #FFFFFF;
+}
+/* ================================= */
+/* :::::::::: 2. Header :::::::::::: */
+/* ================================= */
+
+.welcome {
+	float: left;
+	width: 100%;
+	margin-top: 30px;
+}
+.welcome .logo {
+	float: left;
+}
+.social-icons {
+	float: right;
+}
+.social-icons li {
+	list-style: none;
+	text-align: center;
+	padding-top: 8px;
+	border: 1px solid #ffffff;
+	border-radius: 50%;
+	float: left;
+	width: 35px;
+	height: 35px;
+	margin-left: 15px;
+	opacity: 0.5;
+}
+.social-icons li:hover {
+	opacity: 0.9;
+}
+.social-icons li a {
+	color: #ffffff!important;
+}
+.social-icons li i {
+	font-size: 19px;
+}
+/* ================================= */
+/* :::::: 3. Slider ::::::: */
+/* ================================= */
+
+#slider.container {
+	position: relative;
+	height: 99%;
+	vertical-align: middle;
+}
+.bxslider .title {
+	text-align: center;
+	color: #ffffff;
+	font-size: 60px;
+	font-weight: 900;
+	line-height: 1.3em;
+}
+.bxslider .title span {
+	color: #F79862;
+}
+.bxslider h3 {
+	color: #FFFFFF;
+	font-size: 18px;
+	font-weight: 400;
+	text-align: center;
+}
+.bx-wrapper {
+	position: relative;
+	padding: 0;
+    *zoom: 1;
+	top: 22%;
+	bottom: 22%;
+}
+/* :::::: Mouse Scroller ::::::: */
+
+.bxslider .scroller {
+	margin: 50px auto 0 auto;
+	color: rgba(255, 255, 255, 0.6);
+	font-weight: 900;
+	width: 150px;
+	text-align: center;
+}
+.bxslider .scroller a, .bxslider .scroller a:link {
+	color: rgba(255, 255, 255, 0.6);
+	font-weight: 900;
+	text-decoration: none;
+}
+.bxslider .scroller a:hover {
+	color: rgba(255, 255, 255, 0.9);
+}
+.bxslider .scroller span {
+	margin: 40px auto 10px auto;
+	width: 25px;
+	height: 40px;
+	text-align: center;
+	border: 2px solid #ffffff;
+	display: block;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+}
+.bxslider .scroller span.scroll-down {
+	display: block;
+	width: 4px;
+	height: 7px;
+	background: #fff;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	margin: 10% auto auto auto;
+	-webkit-animation: scroll-inner 1s;
+	animation: scroll-inner 1s;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	-webkit-animation-timing-function: ease;
+	animation-timing-function: ease
+}
+ @-webkit-keyframes scroll-inner {
+ from {
+margin-top: 15%;
+}
+ to {
+margin-top: 50%;
+}
+}
+@keyframes scroll-inner {
+ from {
+margin-top: 15%;
+}
+ to {
+margin-top: 50%;
+}
+}
+@-webkit-keyframes scroll-mouse {
+ from {
+margin-top: 0;
+}
+ to {
+margin-top: 15px;
+}
+}
+@keyframes scroll-mouse {
+ from {
+margin-top: 0;
+}
+ to {
+margin-top: 15px;
+}
+}
+#thank-you.container {
+	position: relative;
+	height: 100%;
+}
+#thank-you div {
+	top: 20%;
+	position: relative;
+}
+#thank-you h2 {
+	text-align: center;
+	color: #ffffff;
+	font-size: 60px;
+	font-weight: 900;
+	line-height: 1.3em;
+}
+#thank-you span {
+	color: #F79862;
+}
+/* ================================= */
+/* :::::: 4. Footer ::::::: */
+/* ================================= */
+
+#footer {
+	min-height: 50px;
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.3);
+	width: 100%;
+	bottom: 0;
+}
+#footer .social-icons {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	width: 205px;
+}
+#footer .social-icons li {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#footer .social-icons ul {
+	padding: 0;
+}
+/* Email-form */
+.email-form {
+	float: left;
+	width: 100%;
+	margin: 40px 0;
+	text-align: center;
+}
+.email-form h4 {
+	text-align: center;
+	color: #ffffff!important;
+	font-size: 24px!important;
+	font-weight: 900!important;
+}
+.email-form h4 span {
+	color: #F79862!important;
+}
+.newsletter {
+	margin-top: 30px;
+}
+.newsletter input {
+	background: #ffffff;
+	-webkit-border-top-left-radius: 30px;
+	-webkit-border-bottom-left-radius: 30px;
+	-moz-border-radius-topleft: 30px;
+	-moz-border-radius-bottomleft: 30px;
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+	width: 320px;
+	height: 60px;
+	border: none;
+	font-weight: 900;
+	font-size: 14px;
+	font-family: inherit;
+	color: #999999;
+	padding-left: 30px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+ color: #d6d6d6;
+}
+::-moz-placeholder { /* Firefox 19+ */
+ color: #d6d6d6;
+}
+:-ms-input-placeholder { /* IE 10+ */
+ color: #d6d6d6;
+}
+:-moz-placeholder { /* Firefox 18- */
+ color: #d6d6d6;
+}
+.newsletter button {
+	background: #F79862;
+	color: #ffffff;
+	-webkit-border-top-right-radius: 30px;
+	-webkit-border-bottom-right-radius: 30px;
+	-moz-border-radius-topright: 30px;
+	-moz-border-radius-bottomright: 30px;
+	border-top-right-radius: 30px;
+	border-bottom-right-radius: 30px;
+	width: 176px;
+	height: 60px;
+	border: none;
+	padding: 0;
+	margin-left: -5px;
+	font-weight: 900;
+	font-size: 14px;
+	font-family: inherit;
+}
+
+/* ================================= */
+/* :::::: 5. Responsive CSS ::::::: */
+/* ================================= */
+
+@media only screen and (max-width: 1366px) {
+}
+
+@media only screen and (max-width: 1036px) {
+}
+
+@media only screen and (max-width: 768px) {
+.bxslider .title, #thank-you h2 {
+	font-size: 50px;
+	line-height: 1.2em;
+}
+}
+
+@media only screen and (max-width: 736px) {
+}
+
+@media only screen and (max-width: 667px) {
+}
+
+@media only screen and (max-width: 568px) {
+.bxslider .title, #thank-you h2 {
+	font-size: 40px;
+	line-height: 1.1em;
+}
+.email-form h4 {
+	font-size: 18px!important;
+}
+.newsletter input {
+	width: 70%;
+	height: 40px;
+	margin-bottom: 15px;
+	-webkit-border--radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+}
+.bxslider .scroller {
+	margin-top: 50px;
+}
+.newsletter button {
+	height: 40px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+}
+#footer {
+}
+}
+
+@media only screen and (max-width: 414px) {
+}
+
+@media only screen and (max-width: 320px) {
+}
