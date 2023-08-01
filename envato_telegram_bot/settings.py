@@ -99,3 +99,7 @@ CHROME_DRIVER_PATH = BASE_DIR / 'chrome_driver/chromedriver114.0.5735.90.exe'
 CRONJOBS = [
     ('0 */12 * * *', 'codal.tasks.company_profile_updater'),
 ]
+
+
+BOT_TOKEN = env('BOT_TOKEN')
+REQUEST_TOKEN = env('REQUEST_TOKEN')

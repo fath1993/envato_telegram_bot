@@ -4,8 +4,11 @@ from django_jalali.db import models as jmodel
 
 
 class EnvatoFile(models.Model):
-    link = models.CharField(max_length=2000, null=False, blank=False, verbose_name="لینک صفحه اصلی فایل")
-    file = models.FileField(upload_to='envato-files', null=True, blank=True, verbose_name="فایل")
+    page_link = models.CharField(max_length=2000, null=False, blank=False, verbose_name="لینک صفحه اصلی فایل")
+    src_link = models.CharField(max_length=2000, null=True, blank=True, verbose_name="لینک اصلی فایل")
+    file = models.FileField(upload_to='envato/', null=True, blank=True, verbose_name="فایل")
+    in_progress = models.BooleanField(default=False, verbose_name='آیا در حال دانلود است؟')
+    is_acceptable_file = models.BooleanField(default=True, verbose_name='آیا فایل با فرمت های طراحی شده سازگار است؟')
     created_at = jmodel.jDateTimeField(auto_now_add=True, verbose_name="تاریخ و زمان ایجاد")
     updated_at = jmodel.jDateTimeField(auto_now=True, verbose_name="تاریخ و زمان بروزرسانی")
 
@@ -15,45 +18,42 @@ class EnvatoFile(models.Model):
         verbose_name_plural = "فایل های انواتو"
 
     def __str__(self):
-        return self.link
+        return self.page_link
 
 
-class EnvatoUserFile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False, verbose_name='کاربر')
-    file = models.ForeignKey(EnvatoFile, on_delete=models.CASCADE, null=False, blank=False, verbose_name='فایل')
-    is_single_pay = models.BooleanField(default=False, null=False, blank=False, verbose_name='آیا پرداخت تکی است؟')
-    is_noticed = models.BooleanField(default=False, null=False, blank=False, verbose_name='آیا اطلاع رسانی شده است؟')
-
-
-    class Meta:
-        verbose_name = "ارتباط کابر و فایل"
-        verbose_name_plural = "ارتباط کاربران و فایل ها"
-
-    def __str__(self):
-        return self.user.username + " | " + self.file.link
-
-
-class ConfigSetting(models.Model):
-    sleep_time = models.PositiveSmallIntegerField(default=60, verbose_name="زمان توقف ربات بین هر کوئری")
+class EnvatoSetting(models.Model):
+    sleep_time = models.PositiveSmallIntegerField(default=5, verbose_name="زمان توقف ربات بین هر کوئری")
     envato_user = models.CharField(max_length=255, null=True, blank=True, verbose_name='نام کاربری انواتو')
     envato_pass = models.CharField(max_length=255, null=True, blank=True, verbose_name='کلمه عبور انواتو')
     envato_cookie = models.FileField(upload_to='envato', null=True, blank=True, verbose_name='کوکی انواتو')
+    login_status = models.BooleanField(default=False, verbose_name='آیا احراز هویت فعال است؟')
     # is_proxy_on = models.BooleanField(default=True, null=False, blank=False, verbose_name='پراکسی فعال باشد؟')
+    envato_thread_number = models.PositiveSmallIntegerField(default=4, null=False, blank=False, verbose_name='تعداد پردازش همزمان انواتو')
+    envato_queue_number = models.PositiveSmallIntegerField(default=4, null=False, blank=False, verbose_name='تعداد پردازش صف انواتو')
 
     def __str__(self):
-        return str('تنظیمات')
+        return 'تنظیمات انواتو'
 
     class Meta:
-        verbose_name = "تنظیمات"
-        verbose_name_plural = "تنظیمات"
+        verbose_name = 'تنظیمات انواتو'
+        verbose_name_plural = 'تنظیمات انواتو'
 
 
-def config_settings():
+def get_envato_config_settings():
     try:
-        settings = ConfigSetting.objects.filter().latest('id')
+        envato_config_settings = EnvatoSetting.objects.filter().latest('id')
     except:
-        settings = ConfigSetting(
-            sleep_time=40,
+        envato_config_settings = EnvatoSetting(
+            sleep_time=5,
         )
-        settings.save()
-    return settings
+        envato_config_settings.save()
+    return envato_config_settings
+
+
+class EnvatoActiveThread(models.Model):
+    def __str__(self):
+        return str(self.id)
+
+    class Meta:
+        verbose_name = "ترد فعال انواتو"
+        verbose_name_plural = "ترد های فعال انواتو"

@@ -1,13 +1,16 @@
 from django.contrib import admin
 
-from envato.models import ConfigSetting, EnvatoFile, EnvatoUserFile
+from envato.models import EnvatoFile, EnvatoActiveThread, EnvatoSetting
 
 
 @admin.register(EnvatoFile)
 class EnvatoFileAdmin(admin.ModelAdmin):
     list_display = (
-        'link',
-        'file_is_downloadable',
+        'page_link',
+        'src_link',
+        'file_is_downloaded',
+        'in_progress',
+        'is_acceptable_file',
         'created_at_display',
         'updated_at_display',
     )
@@ -18,14 +21,17 @@ class EnvatoFileAdmin(admin.ModelAdmin):
     )
 
     fields = (
-        'link',
+        'page_link',
+        'src_link',
         'file',
+        'in_progress',
+        'is_acceptable_file',
         'created_at',
         'updated_at',
     )
 
     @admin.display(description='دانلود شده', empty_value='???')
-    def file_is_downloadable(self, obj):
+    def file_is_downloaded(self, obj):
         if obj.file:
             return 'بله'
         else:
@@ -40,30 +46,15 @@ class EnvatoFileAdmin(admin.ModelAdmin):
         return obj.updated_at.strftime('%Y-%m-%d %H:%M')
 
 
-@admin.register(EnvatoUserFile)
-class EnvatoUserFileAdmin(admin.ModelAdmin):
-    list_display = (
-        'user',
-        'file',
-        'is_single_pay',
-        'is_noticed',
-    )
-
-    fields = (
-        'user',
-        'file',
-        'is_single_pay',
-        'is_noticed',
-    )
-
-
-@admin.register(ConfigSetting)
-class Admin(admin.ModelAdmin):
+@admin.register(EnvatoSetting)
+class EnvatoSettingAdmin(admin.ModelAdmin):
     list_display = (
         'sleep_time',
-        # 'is_proxy_on',
         'envato_user',
         'envato_pass',
+        'login_status',
+        'envato_thread_number',
+        'envato_queue_number',
     )
 
     fields = (
@@ -72,9 +63,26 @@ class Admin(admin.ModelAdmin):
         'envato_user',
         'envato_pass',
         'envato_cookie',
+        'login_status',
+        'envato_thread_number',
+        'envato_queue_number',
+    )
+
+
+@admin.register(EnvatoActiveThread)
+class EnvatoActiveThreadAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+    )
+
+    readonly_fields = (
+        'id',
+    )
+
+    fields = (
+        'id',
     )
 
     def has_add_permission(self, request):
-        if self.model.objects.count() >= 1:
-            return False
-        return super().has_add_permission(request)
+        return False
+

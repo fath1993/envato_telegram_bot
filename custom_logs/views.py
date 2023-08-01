@@ -26,7 +26,7 @@ def ajax_logs_data(request):
     else:
         debug_logs = CustomLog.objects.filter(log_level='INFO').order_by('-id')[:100]
     for log in debug_logs:
-        log_list.append([log.created_at.strftime('%Y-%m-%d %H:%S'), log.description])
+        log_list.append([log.created_at.strftime('%Y-%m-%d %H:%M'), log.description])
     print(log_list)
     return JsonResponse({'result': log_list})
 
