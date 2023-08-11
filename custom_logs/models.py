@@ -27,8 +27,12 @@ class CustomLog(models.Model):
 def custom_log(description, log_level=None):
     if not log_level:
         log_level = 'INFO'
+    # new_log = CustomLog(
+    #     description=str(description)[:254],
+    #     log_level=log_level,
+    # )
     new_log = CustomLog(
-        description=str(description)[:254],
+        description=str(description),
         log_level=log_level,
     )
     new_log.save()

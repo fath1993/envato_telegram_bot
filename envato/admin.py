@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from envato.models import EnvatoFile, EnvatoActiveThread, EnvatoSetting
+from envato.models import EnvatoFile, EnvatoActiveThread, EnvatoSetting, EnvatoTelegramBotSetting
 
 
 @admin.register(EnvatoFile)
@@ -69,6 +69,19 @@ class EnvatoSettingAdmin(admin.ModelAdmin):
     )
 
 
+@admin.register(EnvatoTelegramBotSetting)
+class EnvatoTelegramBotSettingAdmin(admin.ModelAdmin):
+    list_display = (
+        'bot_address',
+        'bot_token',
+    )
+
+    fields = (
+        'bot_address',
+        'bot_token',
+    )
+
+
 @admin.register(EnvatoActiveThread)
 class EnvatoActiveThreadAdmin(admin.ModelAdmin):
     list_display = (
@@ -85,4 +98,6 @@ class EnvatoActiveThreadAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request):
         return False
+
+
 

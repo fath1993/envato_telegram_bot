@@ -8,6 +8,7 @@ class ProfileAdmin(admin.ModelAdmin):
         'user',
         'vip_expiry_date',
         'account_credit',
+        'allowed_request_per_day',
     )
 
     fields = (
@@ -15,6 +16,7 @@ class ProfileAdmin(admin.ModelAdmin):
         'profile_pic',
         'vip_expiry_date',
         'account_credit',
+        'allowed_request_per_day',
     )
 
 

@@ -4,8 +4,8 @@ from django_jalali.db import models as jmodel
 
 
 class EnvatoFile(models.Model):
-    page_link = models.CharField(max_length=2000, null=False, blank=False, verbose_name="لینک صفحه اصلی فایل")
-    src_link = models.CharField(max_length=2000, null=True, blank=True, verbose_name="لینک اصلی فایل")
+    page_link = models.CharField(max_length=5000, null=False, blank=False, verbose_name="لینک صفحه اصلی فایل")
+    src_link = models.CharField(max_length=5000, null=True, blank=True, verbose_name="لینک اصلی فایل")
     file = models.FileField(upload_to='envato/', null=True, blank=True, verbose_name="فایل")
     in_progress = models.BooleanField(default=False, verbose_name='آیا در حال دانلود است؟')
     is_acceptable_file = models.BooleanField(default=True, verbose_name='آیا فایل با فرمت های طراحی شده سازگار است؟')
@@ -48,6 +48,30 @@ def get_envato_config_settings():
         )
         envato_config_settings.save()
     return envato_config_settings
+
+
+class EnvatoTelegramBotSetting(models.Model):
+    bot_address = models.CharField(max_length=255, null=False, blank=False, verbose_name='آدرس')
+    bot_token = models.CharField(max_length=255, null=False, blank=False, verbose_name='توکن')
+
+    def __str__(self):
+        return 'تنظیمات ربات تلگرام انواتو'
+
+    class Meta:
+        verbose_name = 'تنظیمات ربات تلگرام انواتو'
+        verbose_name_plural = 'تنظیمات ربات تلگرام انواتو'
+
+
+def get_envato_telegram_bot_config_settings():
+    try:
+        envato_telegram_bot_config_settings = EnvatoTelegramBotSetting.objects.filter().latest('id')
+    except:
+        envato_telegram_bot_config_settings = EnvatoTelegramBotSetting(
+            bot_address='',
+            bot_token='',
+        )
+        envato_telegram_bot_config_settings.save()
+    return envato_telegram_bot_config_settings
 
 
 class EnvatoActiveThread(models.Model):
