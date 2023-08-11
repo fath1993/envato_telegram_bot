@@ -83,31 +83,6 @@
             },
         })
     }
-
-    while (true){
-        var tag = document.querySelector('downloads-manager')
-        if (tag !== null) {
-            break
-        }
-    }
-    while (true){
-        var tag_shadowRoot = tag.shadowRoot
-        if (tag_shadowRoot !== null) {
-            break
-        }
-    }
-    var tag = document.querySelector('downloads-manager').shadowRoot
-    if (tag !== null) {
-      alert('I have a reference to a ' + selection.tagName + ' element.');
-    } else {
-      alert('The element does not exists in the page.');
-    }
-    var tag_shadow_root_state = setInterval(() => {
-        try {
-            var tag = document.querySelector('downloads-manager').shadowRoot
-            clearInterval(tag_shadow_root_state);
-        } catch {}
-    }, 1000);
 </script>
 
 
